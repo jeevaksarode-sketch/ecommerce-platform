@@ -7,7 +7,6 @@ interface Product {
   id: string; name: string; description: string; price: number; image: string; category: string; stock: number;
 }
 
-// Premium Mock Database Assets initialized directly on the client layer for clean deployment compatibility
 const INITIAL_PRODUCTS: Product[] = [
   {
     id: "prod-1",
@@ -52,7 +51,6 @@ export default function Storefront() {
   const [cart, setCart] = useState<{ product: Product; quantity: number }[]>([]);
   const [filter, setFilter] = useState('All');
 
-  // Load shopping basket history tracking from Local Storage memory layout
   useEffect(() => {
     const savedCart = localStorage.getItem('horizon_cart');
     if (savedCart) setCart(JSON.parse(savedCart));
@@ -95,7 +93,7 @@ export default function Storefront() {
         <div className="relative bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl mb-12 overflow-hidden border border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
           <div className="relative max-w-2xl z-10">
-            <span className="inline-flex items-center bg-blue-500/30 text-blue-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-blue-400/20 shadow-sm animate-pulse">
+            <span className="inline-flex items-center bg-blue-500/30 text-blue-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-blue-400/20 shadow-sm">
               Summer Campaign Active
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold mt-4 tracking-tight leading-tight">
@@ -154,7 +152,7 @@ export default function Storefront() {
                 <ShoppingBag className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                 <h3 className="font-bold text-gray-700 text-lg">Your Catalog is Vacant</h3>
                 <p className="text-sm text-gray-400 mt-1 max-w-xs mx-auto">
-                  Head over to the administrator panel route to append items straight into your active tracking grid template!
+                  Add items through your interface to view your collection catalog entries.
                 </p>
               </div>
             ) : (
@@ -203,7 +201,7 @@ export default function Storefront() {
                 <span>Your Order Cart</span>
               </span>
               {totalCartItems > 0 && (
-                <span className="bg-blue-600 text-white text-xs px-2.5 py-0.5 rounded-full font-black animate-bounce">
+                <span className="bg-blue-600 text-white text-xs px-2.5 py-0.5 rounded-full font-black">
                   {totalCartItems}
                 </span>
               )}
@@ -218,7 +216,7 @@ export default function Storefront() {
               <div className="space-y-4 pt-4">
                 <div className="divide-y divide-gray-100 max-h-64 overflow-y-auto pr-1">
                   {cart.map((item) => (
-                    <div key={item.product.id} className="py-3 flex justify-between items-start text-sm group animate-fade-in">
+                    <div key={item.product.id} className="py-3 flex justify-between items-start text-sm group">
                       <div className="pr-3">
                         <p className="font-bold text-gray-800 line-clamp-1">{item.product.name}</p>
                         <p className="text-xs text-gray-400 mt-0.5">
