@@ -1,0 +1,28 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Float
+  image       String
+  category    String
+  stock       Int      @default(10)
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id          String   @id @default(uuid())
+  customerName String
+  address     String
+  total       Float
+  status      String   @default("Pending")
+  items       String   
+  createdAt   DateTime @default(now())
+}
